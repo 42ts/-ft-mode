@@ -8,7 +8,7 @@
     "strictBindCallApply": true,
     "strictPropertyInitialization": true,
     "lib": ["DOM", "ES2015"],
-    "outDir": "dist",
+    "outDir": "compile",
     "declaration": true,
   },
   "include": [

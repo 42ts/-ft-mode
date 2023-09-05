@@ -1,7 +1,7 @@
 import terser from '@rollup/plugin-terser';
 
 export default {
-  input: 'dist/index.js',
+  input: 'compile/index.js',
   output: {
     dir: 'dist',
     format: 'cjs',
