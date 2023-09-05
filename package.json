@@ -1,12 +1,12 @@
 {
   "private": true,
   "name": "@-ft/mode",
-  "version": "0.0.1-pre2",
+  "version": "0.0.1-pre3",
   "description": "Theme mode manager",
   "types": "./index.d.ts",
   "main": "./index.js",
   "scripts": {
-    "build": "rimraf dist && tsc -p tsconfig.dist.json",
+    "build": "rimraf dist && tsc -p tsconfig.dist.json && rollup -c",
     "publish": "npm run build && package-json-minifier && cpy README.md dist && cd dist && npm publish"
   },
   "author": "Juyeong Maing <mjy9088@naver.com>",
@@ -16,9 +16,11 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.3",
     "cpy-cli": "^5.0.0",
     "package.json-minifier": "^0.0.4",
     "rimraf": "^5.0.1",
+    "rollup": "^3.28.1",
     "typescript": "^5.2.2"
   }
 }
