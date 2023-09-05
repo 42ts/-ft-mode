@@ -1,0 +1,24 @@
+{
+  "private": true,
+  "name": "@-ft/mode",
+  "version": "0.0.1-pre2",
+  "description": "Theme mode manager",
+  "types": "./index.d.ts",
+  "main": "./index.js",
+  "scripts": {
+    "build": "rimraf dist && tsc -p tsconfig.dist.json",
+    "publish": "npm run build && package-json-minifier && cpy README.md dist && cd dist && npm publish"
+  },
+  "author": "Juyeong Maing <mjy9088@naver.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/42ts/-ft-mode.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "cpy-cli": "^5.0.0",
+    "package.json-minifier": "^0.0.4",
+    "rimraf": "^5.0.1",
+    "typescript": "^5.2.2"
+  }
+}
