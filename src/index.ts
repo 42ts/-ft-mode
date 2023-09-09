@@ -8,7 +8,7 @@ interface ModeManager {
   watchTheme(handler: (theme: Theme) => void): () => void;
 }
 
-export const darkModeMediaQuery = window.matchMedia(
+export const darkModeMediaQuery = window?.matchMedia(
   '(prefers-color-scheme: dark)'
 );
 
