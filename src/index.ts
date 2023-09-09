@@ -8,6 +8,10 @@ interface ModeManager {
   watchTheme(handler: (theme: Theme) => void): () => void;
 }
 
+export function sanitizeMode(mode: string): Mode {
+  return mode === 'light' || mode === 'dark' ? mode : 'system';
+}
+
 export function mode(initialMode: string): ModeManager {
   let currentTheme: Theme = 'light';
   const themeWatchers: ((theme: Theme) => void)[] = [];
@@ -66,10 +70,6 @@ export function mode(initialMode: string): ModeManager {
         modeWatchers.splice(index, 1);
       }
     };
-  }
-
-  function sanitizeMode(mode: string): Mode {
-    return mode === 'light' || mode === 'dark' ? mode : 'system';
   }
 
   setMode(sanitizeMode(initialMode));
