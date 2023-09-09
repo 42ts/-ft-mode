@@ -15,7 +15,7 @@ modeManager.watchTheme((theme) => {
 
 // save persistent theme settings when mode is changed
 modeManager.watchMode((mode) => {
-  document.cookie = 'mode=' + mode;
+  document.cookie = 'mode=' + mode + '; path=/';
 });
 
 export { modeManager };
