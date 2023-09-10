@@ -6,7 +6,7 @@
   "types": "./index.d.ts",
   "main": "./index.js",
   "scripts": {
-    "build": "rimraf compile dist && tsc -p tsconfig.compile.json && rollup -c && find compile -name '*.d.ts' | xargs | xargs dts-bundle-generator --no-banner -o dist/index.d.ts",
+    "build": "rimraf compile dist && tsc -p tsconfig.compile.json && rollup -c && dts-bundle-generator --no-banner -o dist/index.d.ts compile/index.d.ts",
     "publish": "npm run build && package-json-minifier && cpy README.md dist && cd dist && npm publish"
   },
   "author": "Juyeong Maing <mjy9088@naver.com>",
