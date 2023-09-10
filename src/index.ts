@@ -8,18 +8,16 @@ interface ModeManager {
   watchTheme(handler: (theme: Theme) => void): () => void;
 }
 
-export const darkModeMediaQuery = window?.matchMedia(
-  '(prefers-color-scheme: dark)'
-);
-
 export function sanitizeMode(mode: string): Mode {
   return mode === 'light' || mode === 'dark' ? mode : 'system';
 }
 
 export function getCurrentTheme(mode: string): Theme {
+  const mediaQuery = window?.matchMedia('(prefers-color-scheme: dark)');
+
   const sanitizedMode = sanitizeMode(mode);
   return sanitizedMode === 'system'
-    ? (['light', 'dark'] as const)[+darkModeMediaQuery.matches]
+    ? (['light', 'dark'] as const)[+mediaQuery.matches]
     : sanitizedMode;
 }
 
@@ -43,6 +41,8 @@ export function mode(initialMode: string): ModeManager {
   }
 
   function modeWatcher() {
+    const mediaQuery = window?.matchMedia('(prefers-color-scheme: dark)');
+
     const eventListener = (e: MediaQueryListEvent) => {
       const theme = e.matches ? 'dark' : 'light';
       setTheme(theme);
@@ -50,13 +50,13 @@ export function mode(initialMode: string): ModeManager {
     let mediaQueryListener: typeof eventListener | undefined;
     return (mode: Mode) => {
       if (mediaQueryListener) {
-        darkModeMediaQuery.removeEventListener('change', mediaQueryListener);
+        mediaQuery.removeEventListener('change', mediaQueryListener);
         mediaQueryListener = undefined;
       }
       if (mode === 'system') {
         mediaQueryListener = eventListener;
-        darkModeMediaQuery.addEventListener('change', mediaQueryListener);
-        const newTheme = darkModeMediaQuery.matches ? 'dark' : 'light';
+        mediaQuery.addEventListener('change', mediaQueryListener);
+        const newTheme = mediaQuery.matches ? 'dark' : 'light';
         setTheme(newTheme);
       } else {
         setTheme(mode);

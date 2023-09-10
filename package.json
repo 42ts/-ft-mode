@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@-ft/mode",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Theme mode manager",
   "types": "./index.d.ts",
   "main": "./index.js",
