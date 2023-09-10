@@ -13,7 +13,7 @@ export function sanitizeMode(mode: string): Mode {
 }
 
 export function getCurrentTheme(mode: string): Theme {
-  const mediaQuery = window?.matchMedia('(prefers-color-scheme: dark)');
+  const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
   const sanitizedMode = sanitizeMode(mode);
   return sanitizedMode === 'system'
@@ -41,7 +41,7 @@ export function mode(initialMode: string): ModeManager {
   }
 
   function modeWatcher() {
-    const mediaQuery = window?.matchMedia('(prefers-color-scheme: dark)');
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
     const eventListener = (e: MediaQueryListEvent) => {
       const theme = e.matches ? 'dark' : 'light';
