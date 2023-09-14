@@ -2,9 +2,10 @@ type Theme = 'light' | 'dark';
 type Mode = Theme | 'system';
 
 interface ModeManager {
-  mode: Mode;
+  getMode(): Mode;
+  setMode(mode: Mode): void;
   watchMode(handler: (mode: Mode) => void): () => void;
-  readonly theme: Theme;
+  getTheme(): Theme;
   watchTheme(handler: (theme: Theme) => void): () => void;
 }
 
@@ -85,14 +86,14 @@ export function mode(initialMode: string): ModeManager {
   setMode(sanitizeMode(initialMode));
 
   return {
-    get mode() {
+    getMode() {
       return currentMode;
     },
-    set mode(mode: Mode) {
+    setMode(mode: Mode) {
       setMode(sanitizeMode(mode));
     },
     watchMode,
-    get theme() {
+    getTheme() {
       return currentTheme;
     },
     watchTheme,

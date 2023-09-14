@@ -2,20 +2,20 @@ import { useCallback, useEffect, useState } from 'react';
 import { modeManager } from './modeManager';
 
 export function App() {
-  const [theme, setTheme] = useState(modeManager.theme);
+  const [theme, setTheme] = useState(modeManager.getTheme());
   useEffect(() => modeManager.watchTheme((theme) => setTheme(theme)));
 
-  const [mode, setMode] = useState(modeManager.mode);
+  const [mode, setMode] = useState(modeManager.getMode());
   useEffect(() => modeManager.watchMode((mode) => setMode(mode)));
 
   const setLightMode = useCallback(() => {
-    modeManager.mode = 'light';
+    modeManager.setMode('light');
   }, []);
   const setDarkMode = useCallback(() => {
-    modeManager.mode = 'dark';
+    modeManager.setMode('dark');
   }, []);
   const setSystemMode = useCallback(() => {
-    modeManager.mode = 'system';
+    modeManager.setMode('system');
   }, []);
 
   return (
