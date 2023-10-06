@@ -1,7 +1,7 @@
-type Theme = 'light' | 'dark';
-type Mode = Theme | 'system';
+export type Theme = 'light' | 'dark';
+export type Mode = Theme | 'system';
 
-interface ModeManager {
+export interface ModeManager {
   getMode(): Mode;
   setMode(mode: Mode): void;
   watchMode(handler: (mode: Mode) => void): () => void;
